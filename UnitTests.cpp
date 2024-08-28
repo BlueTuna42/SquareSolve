@@ -32,6 +32,13 @@ static int SolverTests (coeff abc, roots refRoots, int nRootsRef, unsigned int t
     int nRoots = SolveEquation(abc, &results);
 
     if (!floatEqual(results.x1, refRoots.x1)) {
+        if (nRoots != nRootsRef) {
+            RedTx();
+            printf("ERROR Test %i. nRoots != nRootsRef. nRoots = %i, nRootsRef = %i \n", testNumber, nRoots, nRootsRef);
+            GrayTx();
+            return 0;
+        }
+
         if (!isnan(results.x1) && !isnan(refRoots.x1)) {
             RedTx();
             printf("ERROR Test %i. x1 != x1Ref. x1 = %lg, x1Ref = %lg \n", testNumber, results.x1, refRoots.x1);
@@ -42,13 +49,6 @@ static int SolverTests (coeff abc, roots refRoots, int nRootsRef, unsigned int t
         if (!isnan(results.x2) && !isnan(refRoots.x2)) {
             RedTx();
             printf("ERROR Test %i. x2 != x2Ref. x2 = %lg, x1Ref = %lg \n", testNumber, results.x2, refRoots.x2);
-            txSetConsoleAttr (FOREGROUND_LIGHTGRAY | BACKGROUND_BLACK);
-            return 0;
-        }
-
-        if (nRoots != nRootsRef) {
-            RedTx();
-            printf("ERROR Test %i. nRoots != nRootsRef. nRoots = %i, nRootsRef = %i \n", testNumber, nRoots, nRootsRef);
             GrayTx();
             return 0;
         }
