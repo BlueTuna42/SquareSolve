@@ -20,8 +20,9 @@ static int SolveSquare(coeff abc, roots* answers) {
     } else if (D < 0) {
         return 0;
     } else {
-        answers->x1 = (-abc.b - sqrt(D)) / (2 * abc.a);
-        answers->x2 = (-abc.b + sqrt(D)) / (2 * abc.a);
+        double sqrt_D = sqrt(D);
+        answers->x1 = (-abc.b - sqrt_D) / (2 * abc.a);
+        answers->x2 = (-abc.b + sqrt_D) / (2 * abc.a);
         nRoots = 2;
     }
 
