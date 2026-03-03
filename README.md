@@ -1,1 +1,1 @@
-C language educational project
+Educational project for studying C, Linux and git
